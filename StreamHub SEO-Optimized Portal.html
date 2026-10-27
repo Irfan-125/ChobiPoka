@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <!-- Primary Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">StreamHub - Watch Movies & TV Series Online Free</title>
+    <meta name="title" content="StreamHub - Watch Movies & TV Series Online Free">
+    <meta name="description" id="metaDescription" content="Stream thousands of free movies, trending TV shows, upcoming films, and top-rated series in HD quality with fast streaming servers on StreamHub.">
+    <meta name="keywords" content="free movies, streaming movies, watch tv series, online streaming, streamhub, hd movies, watch series online">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <link rel="canonical" href="https://streamhub.example.com/" id="canonicalUrl">
+
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website" id="ogType">
+    <meta property="og:url" content="https://streamhub.example.com/" id="ogUrl">
+    <meta property="og:title" content="StreamHub - Watch Movies & TV Series Online Free" id="ogTitle">
+    <meta property="og:description" content="Stream thousands of free movies, trending TV shows, upcoming films, and top-rated series in HD quality with fast streaming servers." id="ogDescription">
+    <meta property="og:image" content="https://image.tmdb.org/t/p/w1280/8Y4P9K2M1933.jpg" id="ogImage">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://streamhub.example.com/" id="twitterUrl">
+    <meta property="twitter:title" content="StreamHub - Watch Movies & TV Series Online Free" id="twitterTitle">
+    <meta property="twitter:description" content="Stream thousands of free movies, trending TV shows, upcoming films, and top-rated series in HD quality with fast streaming servers." id="twitterDescription">
+    <meta property="twitter:image" content="https://image.tmdb.org/t/p/w1280/8Y4P9K2M1933.jpg" id="twitterImage">
+
+    <!-- Structured Data (JSON-LD) for WebSite -->
+    <script type="application/ld+json" id="websiteSchema">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "StreamHub",
+      "url": "https://streamhub.example.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://streamhub.example.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Dynamic Media Schema Container -->
+    <script type="application/ld+json" id="mediaSchema">
+    {}
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slateDark: '#0b0f19',
+                        cardDark: '#151c2c',
+                        borderDark: '#26334d',
+                        accentBlue: '#0284c7',
+                        accentBlueHover: '#0369a1',
+                        skyText: '#38bdf8'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .card-hover {
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 28px -5px rgba(0, 0, 0, 0.7);
+        }
+        .aspect-video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+        }
+        .aspect-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #26334d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b4d71;
+        }
+    </style>
+</head>
+<body class="bg-slateDark text-slate-50 min-h-screen font-sans flex flex-col justify-between antialiased selection:bg-accentBlue selection:text-white">
+
+    <!-- Header & Navigation Bar -->
+    <header class="bg-cardDark/95 backdrop-blur border-b border-borderDark sticky top-0 z-50 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-4 py-3 min-h-[4.5rem]">
+                
+                <!-- Logo & Brand -->
+                <div class="flex items-center justify-between w-full lg:w-auto">
+                    <a href="#" id="logoBtn" class="flex items-center space-x-2.5 cursor-pointer text-decoration-none">
+                        <span class="text-3xl">🎬</span>
+                        <h1 class="text-2xl font-extrabold tracking-tight text-skyText">Stream<span class="text-white">Hub</span></h1>
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuBtn" aria-label="Toggle Navigation Menu" class="lg:hidden p-2 text-slate-300 hover:text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav id="navMenu" aria-label="Main Navigation" class="hidden lg:flex flex-wrap items-center justify-center gap-1 sm:gap-2 w-full lg:w-auto">
+                    <button data-category="trending" class="nav-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition bg-accentBlue text-white shadow">🔥 Trending</button>
+                    <button data-category="movies" class="nav-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition">🎥 Movies</button>
+                    <button data-category="tv" class="nav-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition">📺 TV Series</button>
+                    <button data-category="upcoming" class="nav-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition">⏳ Upcoming</button>
+                    <button data-category="top_rated" class="nav-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition">⭐ Top Rated</button>
+                </nav>
+
+                <!-- Search Input Bar -->
+                <div class="flex items-center w-full lg:w-72 space-x-2">
+                    <label for="searchInput" class="sr-only">Search Movies & TV Shows</label>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Search movies & TV shows..." 
+                        class="w-full bg-slateDark border border-borderDark text-white placeholder-slate-400 text-xs sm:text-sm rounded-lg px-3.5 py-2 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition"
+                    >
+                    <button 
+                        id="searchBtn"
+                        aria-label="Submit Search"
+                        class="bg-accentBlue hover:bg-accentBlueHover text-white font-medium text-xs sm:text-sm px-4 py-2 rounded-lg transition shadow flex items-center shrink-0"
+                    >
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow">
+        
+        <!-- Video Player Modal / Section (Hidden by Default) -->
+        <section id="playerSection" class="hidden bg-cardDark border border-borderDark rounded-2xl p-4 sm:p-6 mb-10 shadow-2xl transition-all">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 border-b border-borderDark pb-4">
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span id="playerTypeBadge" class="text-[10px] font-bold uppercase tracking-wider bg-accentBlue text-white px-2 py-0.5 rounded">Movie</span>
+                        <span class="text-xs uppercase font-semibold text-slate-400">Stream Player</span>
+                    </div>
+                    <h2 id="mediaTitle" class="text-xl sm:text-2xl font-bold text-slate-100">Media Title</h2>
+                </div>
+                <button 
+                    id="closePlayerBtn" 
+                    class="bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm font-semibold px-4 py-2 rounded-lg transition self-start sm:self-auto flex items-center shadow"
+                >
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    Close Player
+                </button>
+            </div>
+
+            <!-- Server & TV Episode Controls -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4 bg-slateDark/70 p-3.5 rounded-xl border border-borderDark/60">
+                
+                <!-- Server Switcher -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-semibold text-slate-400 uppercase mr-1">Server:</span>
+                    <button class="server-btn active-server bg-accentBlue text-white text-xs font-semibold px-3 py-1.5 rounded-md transition shadow" data-server="vidsrc_cc">VidSrc CC</button>
+                    <button class="server-btn bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold px-3 py-1.5 rounded-md transition" data-server="vidsrc_xyz">VidSrc XYZ</button>
+                    <button class="server-btn bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold px-3 py-1.5 rounded-md transition" data-server="superembed">SuperEmbed</button>
+                    <button class="server-btn bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold px-3 py-1.5 rounded-md transition" data-server="vidsrc_icu">VidSrc.icu</button>
+                </div>
+
+                <!-- TV Show Selector (Hidden for Movies) -->
+                <div id="tvSelectors" class="hidden flex items-center gap-2">
+                    <label for="seasonSelect" class="text-xs font-semibold text-slate-400 uppercase">Season:</label>
+                    <select id="seasonSelect" class="bg-slateDark border border-borderDark text-white text-xs rounded-md px-2 py-1 focus:outline-none focus:border-accentBlue">
+                        <option value="1">Season 1</option>
+                    </select>
+                    
+                    <label for="episodeSelect" class="text-xs font-semibold text-slate-400 uppercase ml-2">Episode:</label>
+                    <select id="episodeSelect" class="bg-slateDark border border-borderDark text-white text-xs rounded-md px-2 py-1 focus:outline-none focus:border-accentBlue">
+                        <option value="1">Episode 1</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Embedded Player Iframe -->
+            <div class="aspect-video-container bg-black rounded-xl overflow-hidden border border-borderDark shadow-inner">
+                <iframe 
+                    id="videoIframe" 
+                    src="" 
+                    title="Video Player"
+                    allowfullscreen 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                ></iframe>
+            </div>
+        </section>
+
+        <!-- Media Grid Section -->
+        <section>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 border-b border-borderDark/60 pb-4">
+                <h2 id="gridHeading" class="text-xl sm:text-2xl font-bold text-slate-100 flex items-center">
+                    <span class="w-2.5 h-6 bg-accentBlue rounded-full mr-3"></span>
+                    Trending Now
+                </h2>
+                <span id="resultCount" class="text-xs text-slate-400 font-medium"></span>
+            </div>
+
+            <!-- Dynamic Card Grid -->
+            <div id="movieGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+                <!-- Cards injected dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cardDark border-t border-borderDark py-6 text-center text-xs text-slate-400 mt-12">
+        <p>© 2026 StreamHub Portal. Optimized SEO and streaming architecture.</p>
+    </footer>
+
+    <!-- Main JavaScript Logic -->
+    <script>
+        const TMDB_API_KEY = 'b2a4efec552edc2493f135f6c497d766';
+        const BASE_URL = 'https://api.themoviedb.org/3';
+        const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
+        const BACKDROP_URL = 'https://image.tmdb.org/t/p/w1280';
+
+        // State Management
+        let currentCategory = 'trending';
+        let currentMediaId = null;
+        let currentMediaType = 'movie'; // 'movie' or 'tv'
+        let currentServer = 'vidsrc_cc';
+        let selectedSeason = 1;
+        let selectedEpisode = 1;
+
+        // DOM Cache
+        const movieGrid = document.getElementById('movieGrid');
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const logoBtn = document.getElementById('logoBtn');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const navTabs = document.querySelectorAll('.nav-tab');
+        
+        const playerSection = document.getElementById('playerSection');
+        const videoIframe = document.getElementById('videoIframe');
+        const mediaTitle = document.getElementById('mediaTitle');
+        const playerTypeBadge = document.getElementById('playerTypeBadge');
+        const closePlayerBtn = document.getElementById('closePlayerBtn');
+        const gridHeading = document.getElementById('gridHeading');
+        const resultCount = document.getElementById('resultCount');
+        const serverBtns = document.querySelectorAll('.server-btn');
+        
+        const tvSelectors = document.getElementById('tvSelectors');
+        const seasonSelect = document.getElementById('seasonSelect');
+        const episodeSelect = document.getElementById('episodeSelect');
+
+        // On Page Load
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchCategoryData('trending');
+        });
+
+        // Toggle Mobile Navigation
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+            navMenu.classList.toggle('flex');
+        });
+
+        // Navigation Tabs Clicking
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                const category = e.currentTarget.getAttribute('data-category');
+                
+                navTabs.forEach(t => {
+                    t.classList.remove('bg-accentBlue', 'text-white', 'shadow');
+                    t.classList.add('text-slate-300', 'hover:text-white', 'hover:bg-slate-800');
+                });
+                
+                e.currentTarget.classList.remove('text-slate-300', 'hover:text-white', 'hover:bg-slate-800');
+                e.currentTarget.classList.add('bg-accentBlue', 'text-white', 'shadow');
+
+                currentCategory = category;
+                searchInput.value = '';
+                fetchCategoryData(category);
+            });
+        });
+
+        // Logo Reset
+        logoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            navTabs[0].click();
+        });
+
+        // Category Fetch Handler
+        async function fetchCategoryData(category) {
+            showSkeletonLoader();
+            let endpoint = '';
+
+            switch (category) {
+                case 'trending':
+                    gridHeading.innerHTML = `<span class="w-2.5 h-6 bg-accentBlue rounded-full mr-3"></span>Trending Now`;
+                    endpoint = `${BASE_URL}/trending/all/week?api_key=${TMDB_API_KEY}`;
+                    break;
+                case 'movies':
+                    gridHeading.innerHTML = `<span class="w-2.5 h-6 bg-accentBlue rounded-full mr-3"></span>Popular Movies`;
+                    endpoint = `${BASE_URL}/movie/popular?api_key=${TMDB_API_KEY}`;
+                    break;
+                case 'tv':
+                    gridHeading.innerHTML = `<span class="w-2.5 h-6 bg-accentBlue rounded-full mr-3"></span>Popular TV Series`;
+                    endpoint = `${BASE_URL}/tv/popular?api_key=${TMDB_API_KEY}`;
+                    break;
+                case 'upcoming':
+                    gridHeading.innerHTML = `<span class="w-2.5 h-6 bg-accentBlue rounded-full mr-3"></span>Upcoming Movies`;
+                    endpoint = `${BASE_URL}/movie/upcoming?api_key=${TMDB_API_KEY}`;
+                    break;
+                case 'top_rated':
+                    gridHeading.innerHTML = `<span class="w-2.5 h-6 bg-accentBlue rounded-full mr-3"></span>Top Rated (Movies & TV)`;
+                    endpoint = `${BASE_URL}/movie/top_rated?api_key=${TMDB_API_KEY}`;
+                    break;
+            }
+
+            try {
+                const response = await fetch(endpoint);
+                const data = await response.json();
+                if (data && data.results) {
+                    displayCards(data.results, category);
+                } else {
+                    showErrorMessage("No titles found for this category.");
+                }
+            } catch (error) {
+                console.error('Fetch Error:', error);
+                showErrorMessage("Error fetching data from server.");
+            }
+        }
+
+        // Search Handlers
+        searchBtn.addEventListener('click', executeSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') executeSearch();
+        });
+
+        async function executeSearch() {
+            const query = searchInput.value.trim();
+            if (!query) return;
+
+            gridHeading.innerHTML = `<span class="w-2.5 h-6 bg-accentBlue rounded-full mr-3"></span>Search Results for "${escapeHtml(query)}"`;
+            showSkeletonLoader();
+
+            try {
+                const response = await fetch(`${BASE_URL}/search/multi?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(query)}`);
+                const data = await response.json();
+                displayCards(data.results, 'search');
+            } catch (error) {
+                console.error('Search Error:', error);
+                showErrorMessage("Failed to perform search.");
+            }
+        }
+
+        // Render Cards to Grid
+        function displayCards(items, contextCategory) {
+            movieGrid.innerHTML = '';
+            
+            // Filter out people or entries missing posters
+            const validItems = items.filter(item => item.poster_path && (item.media_type !== 'person'));
+
+            if (!validItems || validItems.length === 0) {
+                resultCount.textContent = '';
+                movieGrid.innerHTML = `
+                    <div class="col-span-full py-16 text-center text-slate-400">
+                        <svg class="w-12 h-12 mx-auto mb-3 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h18M3 16h18"></path></svg>
+                        <p class="text-base font-medium">No titles found.</p>
+                    </div>`;
+                return;
+            }
+
+            resultCount.textContent = `Showing ${validItems.length} titles`;
+
+            validItems.forEach(item => {
+                let mediaType = item.media_type;
+                if (!mediaType) {
+                    if (contextCategory === 'tv') mediaType = 'tv';
+                    else mediaType = 'movie';
+                }
+
+                const card = document.createElement('div');
+                card.className = 'movie-card card-hover bg-cardDark border border-borderDark rounded-xl overflow-hidden cursor-pointer flex flex-col justify-between group';
+                
+                const title = item.title || item.name || 'Untitled';
+                const releaseDate = item.release_date || item.first_air_date;
+                const releaseYear = releaseDate ? releaseDate.split('-')[0] : 'N/A';
+                const rating = item.vote_average ? item.vote_average.toFixed(1) : 'N/A';
+                const posterPath = `${IMAGE_URL}${item.poster_path}`;
+
+                card.innerHTML = `
+                    <div class="relative overflow-hidden aspect-[2/3] bg-slate-900">
+                        <img 
+                            src="${posterPath}" 
+                            alt="${escapeHtml(title)}" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            onerror="this.src='https://placehold.co/500x750/151c2c/f8fafc?text=No+Poster'"
+                        >
+                        <div class="absolute top-2 left-2 bg-slateDark/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider text-skyText border border-borderDark/50">
+                            ${mediaType === 'tv' ? 'TV Series' : 'Movie'}
+                        </div>
+                        <div class="absolute top-2 right-2 bg-slateDark/80 backdrop-blur px-2 py-0.5 rounded text-xs font-semibold text-amber-400 border border-borderDark/50 flex items-center">
+                            ⭐ ${rating}
+                        </div>
+                    </div>
+                    <div class="p-3.5 flex flex-col flex-grow justify-between">
+                        <h3 class="font-semibold text-sm text-slate-100 group-hover:text-skyText transition line-clamp-1">${escapeHtml(title)}</h3>
+                        <div class="flex items-center justify-between text-xs text-slate-400 mt-2 pt-2 border-t border-borderDark/50">
+                            <span>${releaseYear}</span>
+                            <span class="text-accentBlue text-[11px] font-medium group-hover:underline">Play Now →</span>
+                        </div>
+                    </div>
+                `;
+
+                card.addEventListener('click', () => {
+                    playMedia(item, mediaType);
+                });
+
+                movieGrid.appendChild(card);
+            });
+        }
+
+        // Dynamic SEO Metadata Updater
+        function updateSEOMetadata(item, mediaType) {
+            const title = item.title || item.name || 'StreamHub';
+            const description = item.overview ? item.overview.slice(0, 160) + '...' : `Watch ${title} online in HD for free on StreamHub.`;
+            const image = item.backdrop_path ? `${BACKDROP_URL}${item.backdrop_path}` : `${IMAGE_URL}${item.poster_path}`;
+
+            // Update Page Title
+            document.title = `Watch ${title} Free HD - StreamHub`;
+            document.getElementById('pageTitle').textContent = `Watch ${title} Free HD - StreamHub`;
+
+            // Update Meta Tags
+            document.getElementById('metaDescription').setAttribute('content', description);
+            document.getElementById('ogTitle').setAttribute('content', `Watch ${title} Free HD - StreamHub`);
+            document.getElementById('ogDescription').setAttribute('content', description);
+            document.getElementById('ogImage').setAttribute('content', image);
+            document.getElementById('twitterTitle').setAttribute('content', `Watch ${title} Free HD - StreamHub`);
+            document.getElementById('twitterDescription').setAttribute('content', description);
+            document.getElementById('twitterImage').setAttribute('content', image);
+
+            // Update Dynamic Schema Markup (JSON-LD)
+            const schemaData = {
+                "@context": "https://schema.org",
+                "@type": mediaType === 'tv' ? "TVSeries" : "Movie",
+                "name": title,
+                "description": item.overview || description,
+                "image": image,
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": item.vote_average || "8.0",
+                    "bestRating": "10",
+                    "ratingCount": item.vote_count || "100"
+                }
+            };
+            document.getElementById('mediaSchema').textContent = JSON.stringify(schemaData);
+        }
+
+        // Initialize Player for Selected Title
+        async function playMedia(item, mediaType) {
+            currentMediaId = item.id;
+            currentMediaType = mediaType;
+            const title = item.title || item.name || 'Untitled';
+            mediaTitle.textContent = title;
+            playerTypeBadge.textContent = mediaType === 'tv' ? 'TV Series' : 'Movie';
+
+            // Update SEO Metadata dynamically
+            updateSEOMetadata(item, mediaType);
+
+            if (mediaType === 'tv') {
+                tvSelectors.classList.remove('hidden');
+                tvSelectors.classList.add('flex');
+                await populateTVSeasons(item.id);
+            } else {
+                tvSelectors.classList.add('hidden');
+                tvSelectors.classList.remove('flex');
+            }
+
+            updateIframeUrl();
+            playerSection.classList.remove('hidden');
+            playerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Populate Season & Episode Dropdowns for TV Series
+        async function populateTVSeasons(tmdbId) {
+            seasonSelect.innerHTML = '';
+            episodeSelect.innerHTML = '';
+
+            try {
+                const res = await fetch(`${BASE_URL}/tv/${tmdbId}?api_key=${TMDB_API_KEY}`);
+                const data = await res.json();
+
+                if (data.seasons && data.seasons.length > 0) {
+                    data.seasons.forEach(season => {
+                        if (season.season_number > 0) { // Filter out specials (season 0)
+                            const opt = document.createElement('option');
+                            opt.value = season.season_number;
+                            opt.textContent = `Season ${season.season_number}`;
+                            seasonSelect.appendChild(opt);
+                        }
+                    });
+                } else {
+                    seasonSelect.innerHTML = '<option value="1">Season 1</option>';
+                }
+
+                selectedSeason = seasonSelect.value || 1;
+                populateEpisodes(selectedSeason);
+            } catch (err) {
+                console.error("TV Seasons Fetch Error:", err);
+                seasonSelect.innerHTML = '<option value="1">Season 1</option>';
+                populateEpisodes(1);
+            }
+        }
+
+        function populateEpisodes(seasonNum) {
+            episodeSelect.innerHTML = '';
+            for (let i = 1; i <= 24; i++) {
+                const opt = document.createElement('option');
+                opt.value = i;
+                opt.textContent = `Episode ${i}`;
+                episodeSelect.appendChild(opt);
+            }
+            selectedEpisode = 1;
+        }
+
+        seasonSelect.addEventListener('change', (e) => {
+            selectedSeason = e.target.value;
+            populateEpisodes(selectedSeason);
+            updateIframeUrl();
+        });
+
+        episodeSelect.addEventListener('change', (e) => {
+            selectedEpisode = e.target.value;
+            updateIframeUrl();
+        });
+
+        // Fixed Embed Path Resolver to avoid net::ERR_BLOCKED_BY_RESPONSE
+        function updateIframeUrl() {
+            if (!currentMediaId) return;
+
+            let embedUrl = '';
+            const isTV = currentMediaType === 'tv';
+
+            switch (currentServer) {
+                case 'vidsrc_cc':
+                    if (isTV) {
+                        embedUrl = `https://vidsrc.cc/v2/embed/tv/${currentMediaId}/${selectedSeason}/${selectedEpisode}`;
+                    } else {
+                        embedUrl = `https://vidsrc.cc/v2/embed/movie/${currentMediaId}`;
+                    }
+                    break;
+                case 'vidsrc_xyz':
+                    if (isTV) {
+                        embedUrl = `https://vidsrc.xyz/embed/tv?tmdb=${currentMediaId}&season=${selectedSeason}&episode=${selectedEpisode}`;
+                    } else {
+                        embedUrl = `https://vidsrc.xyz/embed/movie?tmdb=${currentMediaId}`;
+                    }
+                    break;
+                case 'superembed':
+                    if (isTV) {
+                        embedUrl = `https://multiembed.mov/?video_id=${currentMediaId}&tmdb=1&s=${selectedSeason}&e=${selectedEpisode}`;
+                    } else {
+                        embedUrl = `https://multiembed.mov/?video_id=${currentMediaId}&tmdb=1`;
+                    }
+                    break;
+                case 'vidsrc_icu':
+                    if (isTV) {
+                        embedUrl = `https://vidsrc.icu/embed/tv/${currentMediaId}/${selectedSeason}/${selectedEpisode}`;
+                    } else {
+                        embedUrl = `https://vidsrc.icu/embed/movie/${currentMediaId}`;
+                    }
+                    break;
+                default:
+                    if (isTV) {
+                        embedUrl = `https://vidsrc.cc/v2/embed/tv/${currentMediaId}/${selectedSeason}/${selectedEpisode}`;
+                    } else {
+                        embedUrl = `https://vidsrc.cc/v2/embed/movie/${currentMediaId}`;
+                    }
+            }
+
+            videoIframe.src = embedUrl;
+        }
+
+        // Server Switching Logic
+        serverBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                serverBtns.forEach(b => {
+                    b.classList.remove('active-server', 'bg-accentBlue', 'text-white', 'shadow');
+                    b.classList.add('bg-slate-800', 'hover:bg-slate-700', 'text-slate-300');
+                });
+                
+                const target = e.currentTarget;
+                target.classList.remove('bg-slate-800', 'hover:bg-slate-700', 'text-slate-300');
+                target.classList.add('active-server', 'bg-accentBlue', 'text-white', 'shadow');
+                
+                currentServer = target.getAttribute('data-server');
+                updateIframeUrl();
+            });
+        });
+
+        // Close Player Logic
+        closePlayerBtn.addEventListener('click', () => {
+            playerSection.classList.add('hidden');
+            videoIframe.src = ''; 
+        });
+
+        // Skeleton Loaders
+        function showSkeletonLoader() {
+            movieGrid.innerHTML = Array(10).fill(0).map(() => `
+                <div class="bg-cardDark border border-borderDark rounded-xl overflow-hidden animate-pulse">
+                    <div class="aspect-[2/3] bg-slate-800"></div>
+                    <div class="p-3.5 space-y-2">
+                        <div class="h-4 bg-slate-800 rounded w-3/4"></div>
+                        <div class="h-3 bg-slate-800 rounded w-1/2"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showErrorMessage(msg) {
+            resultCount.textContent = '';
+            movieGrid.innerHTML = `
+                <div class="col-span-full py-12 text-center text-red-400 bg-red-950/20 border border-red-900/30 rounded-xl">
+                    <p class="font-medium">${msg}</p>
+                </div>`;
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            return text.replace(/[&<>"']/g, function(m) {
+                return {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                }[m];
+            });
+        }
+    </script>
+</body>
+</html>
